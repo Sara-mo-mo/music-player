@@ -1,0 +1,137 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: radial-gradient(circle at center, #102a43 0%, #050a0f 100%);
+    background-color: #050a0f;
+    color: white;
+    font-family: 'Cairo', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* الخلفية المضببة */
+.blur-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('abuyusif.jpg'); /* نفس صورة الألبوم */
+    background-size: cover;
+    background-position: center;
+    filter: blur(50px);
+    z-index: -1;
+    opacity: 0.4;
+}
+
+.main-container {
+    display: flex;
+    width: 90%;
+    max-width: 1100px;
+    height: 80vh;
+    gap: 50px;
+    align-items: center;
+}
+
+/* الجزء الشمال */
+.player-side {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.album-art img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.6);
+}
+
+.song-details h1 { font-size: 28px; margin-bottom: 5px; }
+.song-details h3 { color: #1DB954; font-size: 18px; }
+
+/* التحكم */
+.player-controls {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.time-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+#progress {
+    width: 100%;
+    cursor: pointer;
+    accent-color: #1DB954;
+}
+
+#playBtn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: #1DB954;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#playBtn:hover { transform: scale(1.1); }
+
+/* تنسيق حاوية الكلمات */
+.lyrics-side {
+    width: 65%;
+    height: 80vh; /* طول مناسب للشاشة */
+    overflow-y: auto;
+    padding: 200px 40px; /* Padding كبير من فوق وتحت عشان أول وأخر سطر يجوا في النص */
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* السطر العادي: باهت وصغير */
+.lyric-line {
+    font-size: 1.6rem;
+    color: rgba(255, 255, 255, 0.2); /* شفافية عالية */
+    margin-bottom: 40px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* حركة ناعمة جداً */
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* السطر النشط: ينور ويكبر ويغير لونه */
+.lyric-line.active {
+    color: #ffffff;
+    font-size: 2.2rem;
+    font-weight: bold;
+    opacity: 1;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* تأثير الإضاءة */
+}
+
+/* السطر الهايلايت لما ينشط */
+.lyric-line.highlight.active {
+    color: #1DB954; /* أخضر سبوتيفاي */
+    text-shadow: 0 0 25px rgba(29, 185, 84, 0.6);
+}
+
+/* إخفاء السكرول بار عشان الشكل يبقى نظيف */
+.lyrics-side::-webkit-scrollbar {
+    display: none;
+}
